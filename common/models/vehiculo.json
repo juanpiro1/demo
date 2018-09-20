@@ -1,0 +1,27 @@
+{
+  "name": "Vehiculo",
+  "plural": "Vehiculos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Placa": {
+      "type": "string",
+      "required": true
+    },
+    "SOAT": {
+      "type": "date",
+      "required": true
+    },
+    "Conductor": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

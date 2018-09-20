@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Personas</title>
+        <script src ="lib/jquery/dist/jquery.js"></script>
+        <script src ="lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src ="lib/angular/angular.js"></script>
+        <script src ="lib/angular-resource/angular-resource.js"></script>
+        <script src ="js/lb-services.js"></script>
+        <script src= "js/app.js"></script>
+        <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class "main" ng-app="myPersona" ng-controller="myPersonaController">
+            <h1>Lista de personas</h1>
+            <div class="agregarPersona">
+                <input ng-model="NuevaPersona" placeholder="Agregar Persona" class="AgregarTexto">
+                <button ng-click="pushPersona()">Agregar Persona</button>
+            </div>
+            <!--
+            <ul ng-repeat="i in personas">
+                {{i.Nombre}}  
+                <span ng-click="eliminarPersona($index)">x</span>
+            </ul>
+            -->
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indice</th>
+                        <th ng-click="ordenarPor('id')">Id</th>
+                        <th ng-click="ordenarPor('Nombre')"  >Nombre</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="x in personas
+                | orderBy : Orden :Reversa
+                | filter  : Filtro
+                | limitTo : LineasPorPagina : Pagina*LineasPorPagina
+                ">
+                    <td>{{ $index + Pagina*LineasPorPagina +1 }}</td>
+                    <td>{{x.id}}</td>
+                    <td>{{x.Nombre}}</td>
+                </tr>
+            </table>
+            <h1>
+                <span ng-click="decrementarP()"> &laquo </span>
+                <span ng-click="setPagina(p-1)" ng-repeat="p in range(1,PaginasF())">{{p}} </span>
+                <span ng-click="incrementarP()"> &raquo </span>
+                <span ng-click="decrementarLPP()"> - </span>
+                <span ng-click="incrementarLPP()"> + </span>
+            </h1>
+            <p>Pagina {{Pagina}} de {{LineasPorPagina}} lineas orden por {{Orden}}:</p>
+            <p>Pagina (0 initial): <input type="text" ng-model="Pagina"></p>
+            <p>Lineas por Pagina : <input type="text" ng-model="LineasPorPagina"></p>
+            <p>Filtro : <input type="text" ng-model="Filtro"></p>
+        </div>
+        
+    </body>
+</html>

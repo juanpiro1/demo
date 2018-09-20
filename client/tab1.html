@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Vehiculos </title>
+        <script src ="lib/jquery/dist/jquery.js"></script>
+        <script src ="lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src ="lib/angular/angular.js"></script>
+        <script src ="lib/angular-resource/angular-resource.js"></script>
+        <script src ="js/lb-services.js"></script>
+        <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class "main" ng-app="myVehiculo" ng-controller="myVehiculoController">
+            <h1>Lista de Vehiculos</h1>
+            <div class="agregarVehiculo">
+                <input ng-model="NuevoVehiculo" placeholder="Agregar Placa" class="AgregarTexto">
+                <input ng-model="NuevoSOAT" placeholder="Agregar SOAT" class="AgregarTexto">
+                <input ng-model="NuevoConductor" placeholder="Agregar Conductor" class="AgregarTexto">
+                <button ng-click="pushVehiculo()">Agregar Vehiculo</button>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <th bgcolor="Mintcream">Num</th>
+                        <th bgcolor="Snow">Placa</th>
+                        <th bgcolor="Mintcream">SOAT</th>
+                        <th bgcolor="Snow">Conductor</th>
+                    </tr>
+                    <tr ng-repeat="i in vehiculos track by $index">
+                        <td bgcolor="Mintcream">{{$index+1}}</td>
+                        <td bgcolor="Snow">{{i.Placa}}</td>
+                        <td bgcolor="Mintcream">{{i.SOAT}}</td>
+                        <td bgcolor="Snow">{{i.Conductor}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>    
+        <script src= "js/app1.js"></script>
+    </body>
+</html>
